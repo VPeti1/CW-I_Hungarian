@@ -14,7 +14,7 @@ using namespace std;
 int main() {
     system("Title CW-I");
     //checking internet
-    int status = system("echo ping -c 1 google.com");
+    int status = system("ping -c 1 google.com");
     if (status != 0) {
         //no more interwebs or adminnnn privs
         std::cout << "\033[2J\033[1;1H";
