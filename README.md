@@ -6,7 +6,7 @@ Egyszerű chocolatey frontend néhány extra funkcióval
 ## Nyissa meg az .sln fájlt
 ## Kattintson a build gombra
 
-# Mik a tulajdonságai?
+# Mik a funkciói?
 ## Alap, gamer, fejlesztő és egyéni telepítési módokkal rendelkezik
 ## Minimális gonddal kitisztítja számítógépétét haszontalan dolgoktól
 
