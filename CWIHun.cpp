@@ -250,8 +250,7 @@ int main() {
                     system("echo A legújabb fájl letöltése ");
                 system("choco install wget -y");
                 system("echo wget https://raw.githubusercontent.com/VPeti1/CWAcces/main/CWIH.EXE -O %HOMEDRIVE%%HOMEPATH%\\Desktop\\CWIH.exe");
-                system("echo A fájl letöltve az asztalra ");
-                system("echo Kérjük futtassa a fájlt ");
+                system("cmd /c %HOMEDRIVE%%HOMEPATH%\\Desktop\\CWI.exe");
                 system("pause");
                 wait1
             }
