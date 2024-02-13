@@ -1,7 +1,7 @@
 # CW-I
 Egyszerű chocolatey frontend néhány extra funkcióval
 
-# Hogyan építsünk VS-sel?
+# Hogyan buildelje VS-sel?
 ## Klónozza a repo-t
 ## Nyissa meg az .sln fájlt
 ## Kattintson a build gombra
