@@ -12,13 +12,13 @@
 using namespace std;
 
 int main() {
-    system("Title CW-I");
+    system("Title CW-I Magyar");
     //checking internet
     int status = system("ping -c 1 google.com");
     if (status != 0) {
         //no more interwebs or adminnnn privs
         std::cout << "\033[2J\033[1;1H";
-        system("echo Nincs internet vagy administrátor jog! Indítsa újra a programot");;
+        system("echo Nincs internet vagy administrátor jog! Kérjük indítsa újra a programot");;
         system("pause");
         main();
     }
@@ -34,7 +34,7 @@ int main() {
         std::cout << "   \\ \\_______\\ \\____________\\              \\ \\__\\\n";
         std::cout << "    \\|_______|\\|____________|               \\|__|\n";
         std::cout << "\n";
-        system("echo Készítette VPeti ");
+        system("echo Készítette: VPeti ");
         system("pause");
         wait1
             std::cout << "\033[2J\033[1;1H";
@@ -154,21 +154,21 @@ int main() {
             }
             else if (input == "debloat" || input == "Debloat") {
                 clear
-                    system("echo md C:\\CW");
+                    system("md C:\\CW");
                 //install winaero and unzip
                 system("choco install winaero-tweaker wget -y");
                 //downloads debloat
-                system("echo wget https://raw.githubusercontent.com/VPeti1/CWAcces/main/deb.ps1 -O C:\\CW\\CWI.ps1");
+                system("wget https://raw.githubusercontent.com/VPeti1/CWAcces/main/deb.ps1 -O C:\\CW\\CWI.ps1");
                 //run & pray
-                system("echo powershell C:\\CW\\CWI.ps1");
-                system("echo Debloat complete ");
+                system("powershell C:\\CW\\CWI.ps1");
+                system("echo Debloat kész ");
                 system("pause");
                 main();
 
 
             }
             else if (input == "about" || input == "About") {
-                system("echo CW-I v1.6.0 Magyar verzió ");
+                system("echo CW-I v1.6.1 Magyar verzió ");
                 system("pause");
                 main();
 
@@ -236,9 +236,9 @@ int main() {
                 std::cout << "    \\|_______|\\|____________|\\|_______|\\|__|\\|__|\\|__|\\|__|\\|_______|               \\|__|" << std::endl;
                 system("pause");
                 system("choco install wget -y");
-                system("echo md C:\\CW");
-                system("echo wget https://raw.githubusercontent.com/VPeti1/CWAcces/main/CWCare-I.bat -O C:\\CW\\care.bat");
-                system("echo cmd /c C:\\CW\\care.bat");
+                system("md C:\\CW");
+                system("wget https://raw.githubusercontent.com/VPeti1/CWAcces/main/CWCare-I.bat -O C:\\CW\\care.bat");
+                system("cmd /c C:\\CW\\care.bat");
                 system("echo Tisztítás kész");
                 system("pause");
                 clear
@@ -249,7 +249,7 @@ int main() {
                 clear
                     system("echo A legújabb fájl letöltése ");
                 system("choco install wget -y");
-                system("echo wget https://raw.githubusercontent.com/VPeti1/CWAcces/main/CWIH.EXE -O %HOMEDRIVE%%HOMEPATH%\\Desktop\\CWIH.exe");
+                system("wget https://raw.githubusercontent.com/VPeti1/CWAcces/main/CWIH.EXE -O %HOMEDRIVE%%HOMEPATH%\\Desktop\\CWIH.exe");
                 system("cmd /c %HOMEDRIVE%%HOMEPATH%\\Desktop\\CWI.exe");
                 system("pause");
                 wait1
@@ -271,7 +271,7 @@ int main() {
             std::cout << "\033[2J\033[1;1H";
             system("pause");
             system("echo A chocolatey letöltése folyamatban. ");
-            system("echo NE KAPCSOLJON LE AZ INTERNETRÖL, ÉS NE ZÁRJA EZT AZ ABLAKOT! ");
+            system("echo NE KAPCSOLÓDJON LE AZ INTERNETRÖL, ÉS NE ZÁRJA EZT AZ ABLAKOT! ");
             //install choco with BPS
             system("echo powershell Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))");
             //creates the file
