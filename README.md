@@ -8,7 +8,7 @@ Egyszerű chocolatey frontend néhány extra funkcióval
 
 # Mik a funkciói?
 ## Alap, gamer, fejlesztő és egyéni telepítési módokkal rendelkezik
-## Minimális gonddal kitisztítja számítógépétét haszontalan dolgoktól
+## Minimális gondal kitisztítja számítógépétét haszontalan dolgoktól
 
 
 # Ismert problémák
