@@ -7,22 +7,147 @@
 #include <fstream>
 #include <filesystem>
 #include<stdio.h>
+#include <conio.h>
+#define wgeti system("choco install wget -y");
 #define wait1 std::this_thread::sleep_for(std::chrono::seconds(1));
 #define clear std::cout << "\033[2J\033[1;1H";
 using namespace std;
 
-int main() {
-    system("Title CW-I Magyar");
-    //checking internet
+bool checkInternet() {
     int status = system("ping -c 1 google.com");
-    if (status != 0) {
-        //no more interwebs or adminnnn privs
-        std::cout << "\033[2J\033[1;1H";
-        system("echo Nincs internet vagy administrátor jog! Kérjük indítsa újra a programot");;
+    return (status == 0);
+}
+
+void browserselect() {
+    std::string input;
+    system("echo Milyen böngészöt szeretne?: ");
+    system("echo (chrome vagy firefox) ");
+    std::cin >> input;
+    if (input == "chrome" || input == "Chrome") {
+        system("choco install googlechrome -y");
+        system("echo TelepItés kész ");
         system("pause");
-        main();
+    }
+    else if (input == "firefox" || input == "Firefox") {
+        system("choco install firefox -y");
+        system("echo TelepItés kész ");
+        system("pause");
+
     }
     else {
+        system("echo Semmijen böngésző nem lett telepItve  ");
+        system("pause");
+    }
+}
+
+void devActive() {
+    cout << "Irjon be devflag-et \n";
+    cout << "(browserinstall,wgetinstall,adddummychoco) \n";
+    std::string input;
+    std::cin >> input;
+    if (input == "browserinstall" || input == "Browserinstall") {
+        browserselect();
+
+    }
+    if (input == "wgetinstall" || input == "Wgetinstall") {
+        wgeti
+            system("pause");
+
+    }
+    if (input == "adddummychoco" || input == "Adddummychoco") {
+        std::ofstream outfile("C:\\ProgramData\\chocolatey\\bin\\choco.exe");
+    }
+    else {
+        cout << "Nem heligen devflag-et Irt be \n";
+        //goto main
+    }
+}
+
+void devMenuCheck() {
+    const int ESC = 27;
+    bool escPressed = false;
+
+    // Wait for ESC key or timeout
+    //By the way why didnt i use the other timer???????
+    auto start = std::chrono::high_resolution_clock::now();
+    while (!escPressed) {
+        if (_kbhit()) {
+            char key = _getch();
+            if (key == ESC) {
+                escPressed = true;
+            }
+        }
+
+        auto now = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(now - start).count();
+        if (duration >= 1000) {
+            break; // 1s Timeout
+        }
+    }
+
+    if (escPressed) {
+        std::cout << " ________  ___       __                  ___     \n";
+        std::cout << "|\\   ____\\|\\  \\     |\\  \\               |\\  \\    \n";
+        std::cout << "\\ \\  \\___|\\ \\  \\    \\ \\  \\  ____________\\ \\  \\   \n";
+        std::cout << " \\ \\  \\    \\ \\  \\  __\\ \\  \\|\\____________\\ \\  \\  \n";
+        std::cout << "  \\ \\  \\____\\ \\  \\|\\__\\_\\  \\|____________|\\ \\  \\ \n";
+        std::cout << "   \\ \\_______\\ \\____________\\              \\ \\__\\\n";
+        std::cout << "    \\|_______|\\|____________|               \\|__|\n";
+        std::cout << "\n";
+        std::cout << "DEVMENU AKTIV \n";
+        wait1
+            devActive();
+
+    }
+    else {
+        //goto main :)
+    }
+}
+
+
+int main() {
+    int skip = 0;
+    system("Title CW-I");
+    devMenuCheck();
+    char key;
+    bool sKeyPressed = false;
+    auto startTime = std::chrono::high_resolution_clock::now();
+
+    while (true) {
+        if (_kbhit()) {
+            key = _getch();
+            if (key == 's' || key == 'S') {
+                sKeyPressed = true;
+                break;
+            }
+        }
+
+        auto currentTime = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - startTime).count();
+
+        if (duration >= 1000) {
+            break;
+        }
+    }
+
+    if (sKeyPressed) {
+        skip = 1;
+        cout << "Checks skipped";
+    }
+    //checking internet
+    // If 'skip' is not equal to 1, perform internet check
+    if (skip != 1) {
+        if (checkInternet()) {
+            std::cout << "Internet check passed!" << std::endl;
+        }
+        else {
+            // No internet or admin privileges detected
+            std::cout << "\033[2J\033[1;1H";
+            std::cout << "No internet or admin privileges detected! Please connect to the internet or rerun the program." << std::endl;
+            system("pause");
+            main();
+        }
+    }
         //internet check passed
         std::cout << "\033[2J\033[1;1H";
         //Intro here
@@ -34,7 +159,7 @@ int main() {
         std::cout << "   \\ \\_______\\ \\____________\\              \\ \\__\\\n";
         std::cout << "    \\|_______|\\|____________|               \\|__|\n";
         std::cout << "\n";
-        system("echo Készítette: VPeti ");
+        system("echo KészItette: VPeti ");
         system("pause");
         wait1
             std::cout << "\033[2J\033[1;1H";
@@ -57,42 +182,21 @@ int main() {
             system("echo Üdvözöljük a CW-ben ");
             //Choice maker 2000
             std::string input;
-            system("echo Az alap telepítési módhoz írja be hogy basic ");
-            system("echo A gamer telepítési módhoz írja be hogy gamer");
-            system("echo Az egyéni telepítési módhoz írja be hogy custom");
-            system("echo A fejlesztö telepítési módhoz írja be hogy developer");
-            system("echo A kilépéshez írja be hogy exit ");
-            system("echo A névjegy megjelenítéshez írja be hogy about ");
-            system("echo A frissítéshez írja be hogy update ");
-            system("echo A CWCare-I elindításához írja be a care szót ");
+            system("echo Az alap telepItési módhoz Irja be hogy basic ");
+            system("echo A gamer telepItési módhoz Irja be hogy gamer");
+            system("echo Az egyéni telepItési módhoz Irja be hogy custom");
+            system("echo A fejlesztö telepItési módhoz Irja be hogy developer");
+            system("echo A kilépéshez Irja be hogy exit ");
+            system("echo A névjegy megjelenItéshez Irja be hogy about ");
+            system("echo A frissItéshez Irja be hogy update ");
+            system("echo A CWCare-I elindItásához Irja be a care szót ");
             std::cin >> input;
             if (input == "gamer" || input == "Gamer") {
                 clear
                     //runs command basic and gamer apps
                     system("choco install vlc notepadplusplus phyton winrar jre8 steam epicgameslaucher discord -y");
                 //browser selector
-                std::string input;
-                system("echo Milyen böngészöt szeretne?: ");
-                system("echo (chrome vagy firefox) ");
-                std::cin >> input;
-                if (input == "chrome" || input == "Chrome") {
-                    system("choco install googlechrome -y");
-                    system("echo Telepítés kész ");
-                    system("pause");
-                    main();
-                }
-                else if (input == "firefox" || input == "Firefox") {
-                    system("choco install firefox -y");
-                    system("echo Telepítés kész ");
-                    system("pause");
-                    main();
-
-                }
-                else {
-                    system("echo Telepítés kész ");
-                    system("pause");
-                    main();
-                }
+                browserselect();
 
             }
             else if (input == "alap" || input == "Alap") {
@@ -102,51 +206,18 @@ int main() {
                 std::string input;
                 system("echo Akar libreoffice-t?: ");
                 std::cin >> input;
-                if (input == "yes" || input == "Yes") {
-                    system("choco install libreoffice -y");
-                    //install browser
-                    std::string input;
-                    system("echo Milyen böngészöt szeretne?: ");
-                    system("echo (chrome vagy firefox) ");
-                    std::cin >> input;
-                    if (input == "chrome" || input == "Chrome") {
-                        system("choco install googlechrome -y");
-                        system("echo Telepítés kész ");
-                        system("pause");
-                        main();
+                if (input == "igen" || input == "Igen") {
+                    browserselect();
+                    main();
                     }
-                    else {
-                        system("choco install firefox -y");
-                        system("echo Telepítés kész ");
+                    
 
-                    }
-
-                }
+                
 
                 else {
                     //browser selector
-                    std::string input;
-                    system("echo Milyen böngészöt szeretne?: ");
-                    system("echo (chrome vagy firefox) ");
-                    std::cin >> input;
-                    if (input == "chrome" || input == "Chrome") {
-                        system("choco install googlechrome -y");
-                        system("echo Telepítés kész ");
-                        system("pause");
-                        main();
-                    }
-                    else if (input == "firefox" || input == "Firefox") {
-                        system("choco install firefox -y");
-                        system("echo Telepítés kész ");
-                        system("pause");
-                        main();
-
-                    }
-                    else {
-                        system("echo Telepítés kész ");
-                        system("pause");
-                        main();
-                    }
+                    browserselect();
+                    main();
 
 
                 }
@@ -168,7 +239,7 @@ int main() {
 
             }
             else if (input == "about" || input == "About") {
-                system("echo CW-I v1.6.1 Magyar verzió ");
+                system("echo CW-I v1.7.0 Magyar verzió ");
                 system("pause");
                 main();
 
@@ -183,7 +254,7 @@ int main() {
             else if (input == "custom" || input == "Custom") {
                 clear
                     std::string input;
-                system("echo Írja be a program(ok) nevét: ");
+                system("echo Irja be a program(ok) nevét: ");
                 std::cin >> input;
                 system(("cmd /c choco install " + input).c_str());
                 system("pause");
@@ -194,34 +265,10 @@ int main() {
 
             else if (input == "developer" || input == "Developer") {
                 clear
-                    system("choco install vlc imgburn notepadplusplus phyton winrar jre8 vscode visualstudio2022community wget msys2 -y");
+                system("choco install vlc imgburn notepadplusplus phyton winrar jre8 vscode visualstudio2022community wget msys2 -y");
                 //browser selector
-                std::string input;
-                system("echo Milyen böngészöt szeretne?: ");
-                system("echo (chrome vagy firefox) ");
-                std::cin >> input;
-                if (input == "chrome" || input == "Chrome") {
-                    system("choco install googlechrome -y");
-                    system("echo Telepítés kész ");
-                    system("pause");
-                    main();
-                }
-                else if (input == "firefox" || input == "Firefox") {
-                    system("choco install firefox -y");
-                    system("echo Telepítés kész ");
-                    system("pause");
-                    main();
-
-                }
-
-
-
-
-                else {
-                    system("echo Telepítés kész ");
-                    system("pause");
-                    main();
-                }
+                browserselect();
+                main();
 
             }
 
@@ -239,7 +286,7 @@ int main() {
                 system("md C:\\CW");
                 system("wget https://raw.githubusercontent.com/VPeti1/CWAcces/main/CWCare-I.bat -O C:\\CW\\care.bat");
                 system("cmd /c C:\\CW\\care.bat");
-                system("echo Tisztítás kész");
+                system("echo TisztItás kész");
                 system("pause");
                 clear
                     main();
@@ -275,11 +322,11 @@ int main() {
             //install choco with BPS
             system("echo powershell Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))");
             //creates the file
-            system("echo A chocolatey telepítése kész");
+            system("echo A chocolatey telepItése kész");
             system("pause");
             main();
         }
     }
-}
+
 
 
