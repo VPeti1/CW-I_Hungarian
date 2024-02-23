@@ -1,7 +1,13 @@
 # CW-I
 Egyszerű chocolatey frontend néhány extra funkcióval
 
-# Hogyan buildelje VS-sel?
+# Hogyan buildelje g++-al (MINGW)?
+
+## Klónozza a repo-t 
+## Írja át a kódot a tetszés szerint
+## Írja be hogy g++ CWIHun.cpp (-static)
+
+# Hogyan buildelje VS-sel (elavult)?
 ## Klónozza a repo-t
 ## Nyissa meg az .sln fájlt
 ## Kattintson a build gombra

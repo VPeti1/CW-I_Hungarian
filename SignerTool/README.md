@@ -1,4 +1,4 @@
-# README az aláíróhoz
+# README az aláíróhoz (elavult)
 Ez az útmutató a CW-I aláírásához a helyi gépen
 
 # Hogyan kell aláírni?

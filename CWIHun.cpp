@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 #include <thread>
-#include <Windows.h>
+//#include <Windows.h>
 #include <fstream>
 #include <filesystem>
 #include<stdio.h>
